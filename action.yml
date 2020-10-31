@@ -13,7 +13,7 @@ inputs:
     default: false
   directory:
     description: "directory in which to execute sam command."
-    default: "./"
+    default: "./sam-app/"
 runs:
   using: "docker"
   image: "./Dockerfile"
