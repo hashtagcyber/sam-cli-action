@@ -1,4 +1,4 @@
-FROM hashtagcyber/sam-automation:1.1
+FROM hashtagcyber/sam-automation:latest
 
 ENV SAM_CLI_TELEMETRY 0
 
