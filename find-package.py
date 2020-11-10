@@ -25,7 +25,7 @@ def parse_folders(path_list, prefix="sam-", max_projects=2):
         raise Exception("Parse_Folders", "Could not find project folder")
     if len(results) > max_projects:
         raise ValueError(
-            "Max_Projects:{}, Detected:{}".format(max_projects, len(results))
+            "Max_Projects:{}, Detected:{}\n{}".format(max_projects, len(results), ','.join(results))
         )
     return list(results)
 
