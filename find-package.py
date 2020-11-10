@@ -45,7 +45,7 @@ if __name__ == "__main__":
         )
 
     event = get_event(os.environ.get("GITHUB_EVENT_PATH"))
-    repo = event.get("GITHUB_REPOSITORY")
+    repo = os.environ.get("GITHUB_REPOSITORY")
     pr_num = event.get("pull_request", {}).get("number")
 
     gh = Github(os.environ.get("GITHUB_TOKEN"))
