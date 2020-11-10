@@ -48,7 +48,7 @@ if __name__ == "__main__":
     repo = event.get("GITHUB_REPOSITORY")
     pr_num = event.get("pull_request", {}).get("number")
 
-    gh = Github(os.env.get("GITHUB_TOKEN"))
+    gh = Github(os.environ.get("GITHUB_TOKEN"))
     pr_files = get_folders(gh, repo, pr_num)
     projects = parse_folders(pr_files, "sam-", 1)
     print(",".join(projects))
