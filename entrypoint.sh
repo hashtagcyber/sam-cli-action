@@ -56,7 +56,7 @@ function gotoDirectory(){
 #
 #	echo "cd ${INPUT_DIRECTORY}"
 #	cd $INPUT_DIRECTORY
-    cd $(python3 find-package.py)
+    cd $(python3 /find-package.py)
 }
 
 function main(){
