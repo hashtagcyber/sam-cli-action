@@ -19,7 +19,10 @@ def parse_folders(path_list, prefix="sam-", max_projects=2):
             for folder in folders:
                 if prefix in folder:
                     parent = p.split(folder)[0]
-                    results.add("{}/{}".format(parent, folder))
+                    if len(parent) > 0:
+                        results.add("{}/{}".format(parent, folder))
+                    else:
+                        results.add(folder)
                     break
     if len(results) == 0:
         raise Exception("Parse_Folders", "Could not find project folder")
