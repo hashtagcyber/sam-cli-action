@@ -45,17 +45,18 @@ ${output}
 }
 
 function gotoDirectory(){
-	if [ -z "${INPUT_DIRECTORY}" ]; then
-		return 1
-	fi
-
-	if [ ! -d "${INPUT_DIRECTORY}" ]; then
-		echo "Directory ${INPUT_DIRECTORY} does not exists."
-		exit 127
-	fi
-
-	echo "cd ${INPUT_DIRECTORY}"
-	cd $INPUT_DIRECTORY
+	#if [ -z "${INPUT_DIRECTORY}" ]; then
+	#	return 1
+	#fi
+#
+#	if [ ! -d "${INPUT_DIRECTORY}" ]; then
+#		echo "Directory ${INPUT_DIRECTORY} does not exists."
+#		exit 127
+#	fi
+#
+#	echo "cd ${INPUT_DIRECTORY}"
+#	cd $INPUT_DIRECTORY
+    cd $(python3 find-package.py)
 }
 
 function main(){
