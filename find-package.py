@@ -28,7 +28,9 @@ def parse_folders(path_list, prefix="sam-", max_projects=2):
         raise Exception("Parse_Folders", "Could not find project folder")
     if len(results) > max_projects:
         raise ValueError(
-            "Max_Projects:{}, Detected:{}\n{}".format(max_projects, len(results), ','.join(results))
+            "Max_Projects:{}, Detected:{}\n{}".format(
+                max_projects, len(results), ",".join(results)
+            )
         )
     return list(results)
 
@@ -37,6 +39,7 @@ def get_event(event_path):
     with open(event_path) as f:
         data = json.load(f)
     return data
+
 
 def process_pr():
     event = get_event(os.environ.get("GITHUB_EVENT_PATH"))
@@ -48,23 +51,31 @@ def process_pr():
     projects = parse_folders(pr_files, "sam-", 1)
     print(",".join(projects))
 
+
 def process_merge():
     event = get_event(os.environ.get("GITHUB_EVENT_PATH"))
     repo = os.environ.get("GITHUB_REPOSITORY")
-    commit_sha = event.get('commits',{[]})[0].get('sha')
+    commit_sha = event.get("commits", {[]})[0].get("sha")
 
     gh = Github(os.environ.get("GITHUB_TOKEN"))
-    commit = 
+    gh_repo = gh.get_repo(repo)
+    commit = gh_repo.get_commit(commit_sha)
+    pr_num = max([p.number for p in commit.get_pulls()])
+
+    pr_files = get_folders(gh, repo, pr_num)
+    projects = parse_folders(pr_files, "sam-", 1)
+    print(",".join(projects))
+
 
 if __name__ == "__main__":
     event_name = os.environ.get("GITHUB_EVENT_NAME")
     if event_name == "pull_request":
         process_pr()
-    elif event_name == 'push':
+    elif event_name == "push":
         process_merge()
     else:
         raise Exception(
-            "EventMismatch:{}. Must be pull_request".format(
+            "UnsupportedEvent:{}. Must be pull_request or push".format(
                 os.environ.get("GITHUB_EVENT_NAME")
             )
         )
