@@ -56,6 +56,7 @@ function gotoDirectory(){
 #
 #	echo "cd ${INPUT_DIRECTORY}"
 #	cd $INPUT_DIRECTORY
+    cat $GITHUB_EVENT_PATH
     cd $(python3 /find-package.py)
 }
 
