@@ -55,7 +55,7 @@ def process_pr():
 def process_merge():
     event = get_event(os.environ.get("GITHUB_EVENT_PATH"))
     repo = os.environ.get("GITHUB_REPOSITORY")
-    commit_sha = event.get("commits", {[]})[0].get("sha")
+    commit_sha = event.get("commits", [{}])[0].get("sha")
 
     gh = Github(os.environ.get("GITHUB_TOKEN"))
     gh_repo = gh.get_repo(repo)
