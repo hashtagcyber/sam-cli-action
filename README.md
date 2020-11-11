@@ -4,8 +4,7 @@ Fork of @TractorZoom/sam-cli-action
 - Using a different container
 - Added a python script to guess what the right build directory is
 
-Github action for using the [AWS SAM CLI](https://github.com/awslabs/aws-sam-cli) to build and deploy serverless applications written in node 12.x, python 3.8 and go 1.14.6 as well as with custom build makefiles.
-
+Github action for using the [AWS SAM CLI](https://github.com/awslabs/aws-sam-cli) to build and deploy serverless applications. (Python)
 ### Getting Started:
 
 1. Add `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_DEFAULT_REGION` in Settings > Secrets.
