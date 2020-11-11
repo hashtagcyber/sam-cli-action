@@ -4,7 +4,7 @@ Fork of @TractorZoom/sam-cli-action
 - Using a different container
 - Added a python script to guess what the right build directory is
 
-<<<<<<< HEAD
+
 Github action for using the [AWS SAM CLI](https://github.com/awslabs/aws-sam-cli) to build and deploy serverless applications. (Python)
 ### Getting Started:
 
@@ -97,6 +97,3 @@ jobs:
 - git push
 - <clicky click in the UI, merge to main>
 - At this point, any future updates to the infra can be submitted via PR. Pushes to main will get deployed... YAAAAAYYYYY
-=======
-Github action for using the [AWS SAM CLI](https://github.com/awslabs/aws-sam-cli) to build and deploy serverless applications. 
->>>>>>> 10efb839a99f718efdaa33abc7454691649d421e
