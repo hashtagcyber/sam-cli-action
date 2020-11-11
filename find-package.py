@@ -38,15 +38,7 @@ def get_event(event_path):
         data = json.load(f)
     return data
 
-
-if __name__ == "__main__":
-    if os.environ.get("GITHUB_EVENT_NAME") != "pull_request":
-        raise Exception(
-            "EventMismatch:{}. Must be pull_request".format(
-                os.environ.get("GITHUB_EVENT_NAME")
-            )
-        )
-
+def process_pr():
     event = get_event(os.environ.get("GITHUB_EVENT_PATH"))
     repo = os.environ.get("GITHUB_REPOSITORY")
     pr_num = event.get("pull_request", {}).get("number")
@@ -55,3 +47,24 @@ if __name__ == "__main__":
     pr_files = get_folders(gh, repo, pr_num)
     projects = parse_folders(pr_files, "sam-", 1)
     print(",".join(projects))
+
+def process_merge():
+    event = get_event(os.environ.get("GITHUB_EVENT_PATH"))
+    repo = os.environ.get("GITHUB_REPOSITORY")
+    commit_sha = event.get('commits',{[]})[0].get('sha')
+
+    gh = Github(os.environ.get("GITHUB_TOKEN"))
+    commit = 
+
+if __name__ == "__main__":
+    event_name = os.environ.get("GITHUB_EVENT_NAME")
+    if event_name == "pull_request":
+        process_pr()
+    elif event_name == 'push':
+        process_merge()
+    else:
+        raise Exception(
+            "EventMismatch:{}. Must be pull_request".format(
+                os.environ.get("GITHUB_EVENT_NAME")
+            )
+        )
