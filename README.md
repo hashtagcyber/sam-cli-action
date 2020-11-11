@@ -12,6 +12,7 @@ Github action for using the [AWS SAM CLI](https://github.com/awslabs/aws-sam-cli
 
 2. Create a workflow file with a yaml config like the one below (.github/workflows/build-and-test.yaml)
 - You probably don't want random actions owned by a random person having access to your AWS keys
+    - That's a hint that you should fork this action ;)
 - This config will run sam build and sam deploy --no-execute-changeset on every PR to the repo.
 - The output will be attached as a comment to the PR
 - You MUST have samconfig.toml included in git
